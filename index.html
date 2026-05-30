@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packt Hero</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #777a7d; }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── Video ── */
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero__video--mobile { display: none; }
+
+    /* ════════════════════════════════
+       KART
+       font-size: tek master değer —
+       tüm em birimler bununla büyür/küçülür
+    ════════════════════════════════ */
+    .hero__card {
+      position: absolute;
+      z-index: 2;
+      font-family: 'Aptos Display', 'Aptos', 'Segoe UI', system-ui, sans-serif;
+
+      font-size: clamp(10px, 1.05vw, 17px);
+      width: 21em;
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(20, 18, 19, 0.28);
+      border: 0.08em solid rgba(237, 237, 238, 0.28);
+      border-radius: 1.2em;
+      padding: 0.95em;
+
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65em;
+
+      /* Desktop: sol-alt */
+      left: 2.5%;
+      bottom: 2.5%;
+    }
+
+    /* ── Başlık: sol P-mark + sağ üç kelime ── */
+    .hero__head {
+      display: flex;
+      align-items: center;
+      gap: 0.65em;
+    }
+
+    .hero__pmark {
+      flex-shrink: 0;
+      width: 4em;
+      height: auto;
+      display: block;
+      color: #ededee;
+    }
+
+    .hero__title {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero__line {
+      display: block;
+      font-size: 2em;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #ededee;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    /* ── Alt metin ── */
+    .hero__tagline {
+      font-size: 0.82em;
+      font-weight: 400;
+      color: rgba(237, 237, 238, 0.78);
+      line-height: 1.55;
+      text-align: right;
+    }
+
+    /* ── Buton (kartı tam kaplar) ── */
+    .hero__cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.68em 1em;
+      background: #ededee;
+      color: #333132;
+      font-family: inherit;
+      font-size: 0.85em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border: 0.1em solid #ededee;
+      border-radius: 0.55em;
+      cursor: pointer;
+      transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+    }
+    .hero__cta:hover,
+    .hero__cta:focus-visible {
+      background: #E84731;
+      color: #fff;
+      border-color: #E84731;
+      outline: none;
+    }
+
+    /* ════════════════════════════════
+       MOBİL  ≤ 768 px
+    ════════════════════════════════ */
+    @media (max-width: 768px) {
+      .hero__video--desktop { display: none; }
+      .hero__video--mobile  { display: block; }
+
+      .hero__card {
+        font-size: clamp(8px, 2.8vw, 12px);
+        width: 19em;
+        left: auto;
+        bottom: auto;
+        top: 2.5%;
+        right: 2.5%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" role="banner">
+
+    <!-- Desktop video -->
+    <video class="hero__video hero__video--desktop"
+           autoplay muted loop playsinline preload="auto">
+      <source src="pact%20web%20hero%20video.mp4" type="video/mp4">
+    </video>
+
+    <!-- Mobil video -->
+    <video class="hero__video hero__video--mobile"
+           autoplay muted loop playsinline preload="auto">
+      <source src="pact%20web%20hero%20video%20mobil.mp4" type="video/mp4">
+    </video>
+
+    <!-- Kart: desktop sol-alt / mobil sağ-üst -->
+    <div class="hero__card">
+
+      <!-- Sol: büyük P-mark  |  Sağ: üç kelime üst üste -->
+      <div class="hero__head">
+
+        <svg class="hero__pmark" viewBox="0 0 161 163"
+             xmlns="http://www.w3.org/2000/svg" aria-label="Packt">
+          <path fill="currentColor"
+                d="M0,81.28v20.32h50.35c5.56,0,10.07,4.55,10.07,10.16
+                   v50.8h20.14v-60.96c0-11.22-9.02-20.32-20.14-20.32H0Z"/>
+          <polygon fill="currentColor"
+                   points="161.11,81.28 161.11,60.96 110.76,60.96
+                           100.69,50.8 100.69,0 80.55,0
+                           80.55,81.28 161.11,81.28"/>
+        </svg>
+
+        <div class="hero__title">
+          <span class="hero__line">MASANIZIN</span>
+          <span class="hero__line">KONTROLÜ</span>
+          <span class="hero__line">SİZDE!</span>
+        </div>
+
+      </div>
+
+      <p class="hero__tagline">
+        Packt, masanızı tam ihtiyacınıza göre şekillendirir.
+      </p>
+
+      <!-- href'i hedef URL ile güncelleyin -->
+      <a href="#" class="hero__cta">İletişime Geçin</a>
+
+    </div>
+
+  </section>
+</body>
+</html>
