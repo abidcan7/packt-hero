@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- iframe icinde linkler ana pencereyi yonlendirsin -->
+<base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Packt Hero</title>
@@ -14,7 +16,7 @@
       background: #ededee;
     }
 
-    /* ── Hero: iframe'i tamamen doaldurur, boşluk bırakmaz ── */
+    /* ── Hero: iframe'i tamamen doldurur, boşluk bırakmaz ── */
     .hero {
       position: relative;
       width: 100%;
@@ -199,5 +201,17 @@
     </div>
 
   </section>
-</body>
+
+<script>
+/* iframe fix: sayfa ici #linkler base target="_top" ile bozulmasin */
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var h = a.getAttribute('href');
+    if (h.length < 2) { e.preventDefault(); return; }
+    var t = null;
+    try { t = document.querySelector(h); } catch (err) {}
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'auto', block: 'start' }); }
+  });
+});
+</script></body>
 </html>
